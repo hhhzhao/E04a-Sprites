@@ -16,14 +16,16 @@ class MyGame(arcade.Window):
         file_path = os.path.dirname(os.path.abspath(__file__))
         os.chdir(file_path)
         arcade.set_background_color(open_color.blue_4)
-
+        self.set_mouse_visible(True)
+       
         self.animal_list = arcade.SpriteList()
-
+        
 
     def setup(self):
+        
         self.animal_sprite = arcade.Sprite("assets/moose.png", 0.5)
-        self.animal_sprite.center_x = 400
-        self.animal_sprite.center_y = 300
+        self.animal_sprite.center_x = 300
+        self.animal_sprite.center_y = 400
         self.animal_list.append(self.animal_sprite)
         
 
@@ -37,7 +39,9 @@ class MyGame(arcade.Window):
 
 
     def on_mouse_motion(self, x, y, dx, dy):
-        pass
+        self.animal_sprite.center_x = x
+        self.animal_sprite.center_y = y
+
 
 def main():
     """ Main method """

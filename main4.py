@@ -15,23 +15,32 @@ class MyGame(arcade.Window):
         super().__init__(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE)
         file_path = os.path.dirname(os.path.abspath(__file__))
         os.chdir(file_path)
-        arcade.set_background_color(open_color.white)
+        arcade.set_background_color(open_color.blue_4)
+
+        self.poses_list = arcade.SpriteList()
 
 
     def setup(self):
-        pass        
+        pose = ['action1','action2','back','cheer1','cheer2','climb1','climb2','duck','fall','hang','hold1','hold2','hurt','idle','jump','kick','skid','slide','stand','swim1','swim2','talk','walk1','walk2']
+
+        for i in range (20):
+            poses = random.choice(pose)
+            x = random.randint(0,800)
+            y = random.randint(0,600)
+            self.poses_sprite = arcade.Sprite("assets/Poses/adventurer_{poses}.png".format(poses=poses), 0.5)
+            self.poses_sprite.center_x = x
+            self.poses_sprite.center_y = y
+            self.poses_list.append(self.poses_sprite)
+        
 
     def on_draw(self):
         arcade.start_render()
-        pass
+        self.poses_list.draw()
 
 
     def update(self, delta_time):
         pass
 
-
-    def on_mouse_motion(self, x, y, dx, dy):
-        pass
 
 def main():
     """ Main method """
